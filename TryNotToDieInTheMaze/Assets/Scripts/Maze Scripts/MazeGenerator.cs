@@ -47,7 +47,7 @@ public class MazeGenerator : MonoBehaviour
 
     void Start()
     {
-        MazeGeneratorFunc(mazeArray,5,5);
+        MazeGeneratorFunc(mazeArray,45,32);
     }
 
     // Update is called once per frame
