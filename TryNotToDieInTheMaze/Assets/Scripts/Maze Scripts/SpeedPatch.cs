@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class SpeedPatch : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public int speedmod = 100;
+
+    private void OnTriggerEnter(Collider collision)
     {
-        
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<PlayerMovement>().playerSpeed += speedmod;
+            Debug.Log("sped up");
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerExit(Collider collision)
     {
-        
+        if (collision.gameObject.tag == "Player")
+        {
+            collision.gameObject.GetComponent<PlayerMovement>().playerSpeed -= speedmod;
+        }
     }
 }
