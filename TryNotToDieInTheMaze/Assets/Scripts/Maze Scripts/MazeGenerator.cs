@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+using UnityEditor.AI;
 
 public class MazeGenerator : MonoBehaviour
 {
     [Header("Maze Variables")]
-    private int[,] mazeArray = //45 x 32
+    public int[,] mazeArray = //45 x 32
         {{ 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 },
          { 1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,1,1 },
          { 1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,1,1 },
@@ -48,6 +50,7 @@ public class MazeGenerator : MonoBehaviour
     void Start()
     {
         MazeGeneratorFunc(mazeArray,45,32);
+        //needs tp builf thr nasvmesh here 
     }
 
     // Update is called once per frame
