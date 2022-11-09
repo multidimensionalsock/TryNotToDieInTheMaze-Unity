@@ -11,18 +11,21 @@ public class AIMovement : MonoBehaviour
     private bool m_playerInRange;
     private AIState m_state;
     public float MaxDistanceToChase;
-    private float CurrentSpeed;
     [SerializeField] float WanderSpeed; // the speed you go when in wander
     [SerializeField] float ChaseSpeed; //the speed you go when in chase
     [SerializeField] GameObject mazeGen;
     private int[,] maze;
     private NavMeshPath m_CurrentPath;
+    private NavMeshAgent m_Agent;
+    private NavMeshSurface m_navmesh;
 
 
     private void Start()
     {
         //set new target location
         UpdatePath(randomPath());
+        m_Agent = GetComponent<NavMeshAgent>();
+        m_navmesh = mazeGen.GetComponent<NavMeshSurface>();
     }
 
     private void FixedUpdate()
@@ -35,7 +38,7 @@ public class AIMovement : MonoBehaviour
                 {
                     UpdatePath(player.transform.position);
                     m_state = AIState.CHASE;
-                    CurrentSpeed = ChaseSpeed;
+                    m_Agent.speed = ChaseSpeed;
                 }
                 //if current transform is euqal to targetlocation, set a new one
                 else if (transform.position == m_targetLocation)
@@ -49,13 +52,12 @@ public class AIMovement : MonoBehaviour
                 {
                     UpdatePath(randomPath());
                     m_state = AIState.WANDER;
-                    CurrentSpeed = WanderSpeed;
+                    m_Agent.speed = WanderSpeed;
                 }
                 //if player is in range, update location
                 break;
         }
 
-        //i need code to move them towards the path lol
     }
 
     private void UpdatePath(Vector3 newLocation)
@@ -74,6 +76,7 @@ public class AIMovement : MonoBehaviour
         while (maze[(int)tempPos.x, (int)tempPos.z] ! == 1)
         {
             tempPos = new Vector3(Random.Range(0, 45), 2.2f, Random.Range(0, 32));
+            Debug.Log("loop");
         } 
         return tempPos;
     }
