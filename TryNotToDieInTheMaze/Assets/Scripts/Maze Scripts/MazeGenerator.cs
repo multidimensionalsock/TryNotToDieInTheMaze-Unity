@@ -40,6 +40,7 @@ public class MazeGenerator : MonoBehaviour
          { 1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1 },
          { 1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1 },
          { 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 } };
+    private NavMeshSurface m_navmesh;
          
 
     [Header("Prefab Variables")]
@@ -50,7 +51,10 @@ public class MazeGenerator : MonoBehaviour
     void Start()
     {
         MazeGeneratorFunc(mazeArray,45,32);
-        //needs tp builf thr nasvmesh here 
+
+        //build navmesh
+        m_navmesh = GetComponent<NavMeshSurface>();
+        m_navmesh.BuildNavMesh();
     }
 
     // Update is called once per frame

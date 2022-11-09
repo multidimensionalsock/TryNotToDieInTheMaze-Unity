@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 
 public class AIMovement : MonoBehaviour
@@ -15,7 +16,8 @@ public class AIMovement : MonoBehaviour
     [SerializeField] float ChaseSpeed; //the speed you go when in chase
     [SerializeField] GameObject mazeGen;
     private int[,] maze;
-    
+    private NavMeshPath m_CurrentPath;
+
 
     private void Start()
     {
@@ -58,10 +60,8 @@ public class AIMovement : MonoBehaviour
 
     private void UpdatePath(Vector3 newLocation)
     {
-       
-
-
-        //this fucntion updates the players path based on the new location
+        m_CurrentPath = new NavMeshPath();
+        NavMesh.CalculatePath(transform.position, newLocation, NavMesh.AllAreas, m_CurrentPath);
     }
 
     private Vector3 randomPath()
