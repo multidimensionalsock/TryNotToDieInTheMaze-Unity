@@ -72,13 +72,13 @@ public class MazeGenerator : MonoBehaviour
                 switch (mazeMap[i, j])
                 {
                     case 1:
-                        Instantiate(wallPrefab, new Vector3(i, 1.9f, j), Quaternion.identity);
+                        Instantiate(wallPrefab, new Vector3(j, 1.9f, i), Quaternion.identity);
                         break;
                     case 2:
-                        Instantiate(SpeedPatchPrefab, new Vector3(i, 1.9f, j), Quaternion.identity);
+                        Instantiate(SpeedPatchPrefab, new Vector3(j, 1.9f, i), Quaternion.identity);
                         break;
                     case 3:
-                        Instantiate(TeleportPrefab, new Vector3(i, 1.9f, j), Quaternion.identity);
+                        Instantiate(TeleportPrefab, new Vector3(j, 1.9f, i), Quaternion.identity);
                         break;
                 }
             }
