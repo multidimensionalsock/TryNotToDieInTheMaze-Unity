@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class AIMovement : MonoBehaviour
 {
     private Vector3 m_targetLocation;
-    [SerializeField] GameObject player;
+    public GameObject player;
     private AIState m_state;
     public float MaxDistanceToChase = 50f;
     [SerializeField] float WanderSpeed; // the speed you go when in wander
@@ -19,10 +19,11 @@ public class AIMovement : MonoBehaviour
     private NavMeshSurface m_navmesh;
 
 
-    private void Start()
+    private void OnEnable()
     {
-        StartCoroutine(NavmeshLoad());
         m_Agent = GetComponent<NavMeshAgent>();
+        m_navmesh = mazeGen.GetComponent<NavMeshSurface>();
+        UpdatePath(randomPath());
         m_state = AIState.WANDER;
     }
 
