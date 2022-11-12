@@ -524,6 +524,21 @@ PrefabInstance:
       propertyPath: mazeGen
       value: 
       objectReference: {fileID: 29020860}
+    - target: {fileID: 1056675816254755834, guid: 48b246118ba9d574ba70b98a3d5a1bc5,
+        type: 3}
+      propertyPath: ChaseSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1056675816254755834, guid: 48b246118ba9d574ba70b98a3d5a1bc5,
+        type: 3}
+      propertyPath: WanderSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1056675816254755834, guid: 48b246118ba9d574ba70b98a3d5a1bc5,
+        type: 3}
+      propertyPath: MaxDistanceToChase
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 48b246118ba9d574ba70b98a3d5a1bc5, type: 3}

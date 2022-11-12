@@ -8,7 +8,7 @@ public class AIMovement : MonoBehaviour
 {
     private Vector3 m_targetLocation;
     [SerializeField] GameObject player;
-    private AIState m_state = AIState.WANDER;
+    private AIState m_state;
     public float MaxDistanceToChase = 50f;
     [SerializeField] float WanderSpeed; // the speed you go when in wander
     [SerializeField] float ChaseSpeed; //the speed you go when in chase
@@ -21,10 +21,9 @@ public class AIMovement : MonoBehaviour
 
     private void Start()
     {
-        //set new target location
         StartCoroutine(NavmeshLoad());
         m_Agent = GetComponent<NavMeshAgent>();
-
+        m_state = AIState.WANDER;
     }
 
     private void FixedUpdate()
