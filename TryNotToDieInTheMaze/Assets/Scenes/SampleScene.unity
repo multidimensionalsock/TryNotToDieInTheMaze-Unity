@@ -509,6 +509,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyAI
       objectReference: {fileID: 0}
+    - target: {fileID: 1056675816254755833, guid: 48b246118ba9d574ba70b98a3d5a1bc5,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 1056675816254755834, guid: 48b246118ba9d574ba70b98a3d5a1bc5,
         type: 3}
       propertyPath: player
@@ -536,6 +541,7 @@ GameObject:
   - component: {fileID: 883525447}
   - component: {fileID: 883525446}
   - component: {fileID: 883525445}
+  - component: {fileID: 883525451}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -650,6 +656,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &883525451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 883525444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c564d263595f654dba6276bf0cecb3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1026988167
 GameObject:
   m_ObjectHideFlags: 0

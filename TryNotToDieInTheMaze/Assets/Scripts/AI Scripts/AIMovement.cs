@@ -35,17 +35,19 @@ public class AIMovement : MonoBehaviour
                 //if player is in range, change targetLocation to player
                 if (FindRange() < MaxDistanceToChase)
                 {
-                    UpdatePath(player.transform.position);
+                    Debug.Log("should chase");
                     m_state = AIState.CHASE;
                     m_Agent.speed = ChaseSpeed;
                 }
                 //if current transform is euqal to targetlocation, set a new one
                 else if (m_Agent.velocity == Vector3.zero)
                 {
+                    Debug.Log("isnt chasing");
                     UpdatePath(randomPath());
                 }
                 break;
             case AIState.CHASE:
+                UpdatePath(player.transform.position);
                 //if player is no longer in range, switch to wander
                 if (FindRange() > MaxDistanceToChase)
                 {
@@ -62,7 +64,6 @@ public class AIMovement : MonoBehaviour
     private void UpdatePath(Vector3 newLocation)
     {
         m_targetLocation = newLocation;
-        Debug.Log("target: " + newLocation);
         m_Agent.SetDestination(newLocation);
     }
 
@@ -70,7 +71,7 @@ public class AIMovement : MonoBehaviour
     {
         //get the array from mazegenerator
         maze = mazeGen.GetComponent<MazeGenerator>().mazeArray; //45 x 32
-        Vector3 tempPos = new Vector3(Random.Range(0f, 32f) + 0.5f, 2.2f, Random.Range(0f, 45f) + 0.5f); //2.2f
+        Vector3 tempPos = new Vector3(Random.Range(0f, 32f), 2.2f, Random.Range(0f, 45f) + 0.5f); //2.2f
 
         //pick a random location if it does equal zero, set to there, if not loop until it does.
         while (maze[(int)tempPos.x, (int)tempPos.z] ! == 1)
@@ -85,6 +86,7 @@ public class AIMovement : MonoBehaviour
     {
         float tempDist = (player.transform.position - transform.position).magnitude;
         return tempDist;
+        
     }
 
     IEnumerator NavmeshLoad()
