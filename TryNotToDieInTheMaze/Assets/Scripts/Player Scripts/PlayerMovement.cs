@@ -19,7 +19,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        Debug.Log(playerSpeed);
         m_rb.velocity = Vector3.zero;
         if (Input.GetKey(KeyCode.W))
         {
