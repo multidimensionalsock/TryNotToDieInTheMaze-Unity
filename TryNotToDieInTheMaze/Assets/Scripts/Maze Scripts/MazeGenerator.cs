@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEditor.AI;
+using System.Diagnostics.CodeAnalysis;
+using UnityEngine.UIElements;
 
 public class MazeGenerator : MonoBehaviour
 {
@@ -47,6 +49,9 @@ public class MazeGenerator : MonoBehaviour
     public GameObject wallPrefab; //1
     public GameObject SpeedPatchPrefab; //2
     public GameObject TeleportPrefab; //3
+    [SerializeField] GameObject ScorePrefab;
+
+    [SerializeField] GameObject UIref;
 
     void Start()
     {
@@ -60,7 +65,7 @@ public class MazeGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        NewScoreObject();
     }
 
     void MazeGeneratorFunc(int[,] mazeMap, int height, int width)
@@ -83,5 +88,27 @@ public class MazeGenerator : MonoBehaviour
                 }
             }
         }
-    }         
+    }  
+    
+    void NewScoreObject()
+    {
+        Vector3 position = GetRandom();
+        GameObject score = Instantiate(ScorePrefab, GetRandom(), Quaternion.identity);
+        ScoreObjectScript temp = score.GetComponent<ScoreObjectScript>();
+        temp.SetUI(UIref);
+        //when crrated you need to pass the UI to it to inc score when destoryed.
+    }
+
+    Vector3 GetRandom()
+    {
+        Vector3 tempPos = new Vector3(Random.Range(0f, 32f), 2.2f, Random.Range(0f, 45f) + 0.5f); //2.2f
+
+        //pick a random location if it does equal zero, set to there, if not loop until it does.
+        while (mazeArray[(int)tempPos.x, (int)tempPos.z] == 1)
+        {
+            tempPos = new Vector3(Random.Range(0, 31), 2.2f, Random.Range(0, 44));
+            Debug.Log("loop");
+        }
+        return tempPos;
+    }
 }
