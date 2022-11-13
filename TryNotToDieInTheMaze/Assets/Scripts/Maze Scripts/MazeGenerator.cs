@@ -96,7 +96,7 @@ public class MazeGenerator : MonoBehaviour
                 }
             }
         }
-        //StartCoroutine(scoreObjectHandler());
+        StartCoroutine(scoreObjectHandler());
     }
 
     void NewScoreObject(Vector3 position)
@@ -138,6 +138,6 @@ public class MazeGenerator : MonoBehaviour
                 activated = true;
             }
         }
-        //StartCoroutine(scoreObjectHandler());
+        StartCoroutine(scoreObjectHandler());
     }
 }
