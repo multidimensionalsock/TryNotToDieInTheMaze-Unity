@@ -177,7 +177,7 @@ MonoBehaviour:
   ScorePrefab: {fileID: 8035202124296861027, guid: 26e4ab2239cd8a54bb40f54e2de1b864,
     type: 3}
   UIref: {fileID: 266734482}
-  scoreObjectGenFrequency: 5
+  scoreObjectGenFrequency: 1
 --- !u!114 &29020863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,6 +259,7 @@ MonoBehaviour:
   AI2: {fileID: 170511809}
   AI3: {fileID: 413241630}
   AI4: {fileID: 1951259022}
+  newEnemySpawnTime: 60
 --- !u!1001 &120763662
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -280,17 +281,17 @@ PrefabInstance:
     - target: {fileID: 1056675816254755782, guid: 48b246118ba9d574ba70b98a3d5a1bc5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -27.132854
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1056675816254755782, guid: 48b246118ba9d574ba70b98a3d5a1bc5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -15.22367
+      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 1056675816254755782, guid: 48b246118ba9d574ba70b98a3d5a1bc5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.1904163
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 1056675816254755782, guid: 48b246118ba9d574ba70b98a3d5a1bc5,
         type: 3}
@@ -347,6 +348,21 @@ PrefabInstance:
       propertyPath: mazeGen
       value: 
       objectReference: {fileID: 29020860}
+    - target: {fileID: 1056675816254755834, guid: 48b246118ba9d574ba70b98a3d5a1bc5,
+        type: 3}
+      propertyPath: ChaseSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1056675816254755834, guid: 48b246118ba9d574ba70b98a3d5a1bc5,
+        type: 3}
+      propertyPath: WanderSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1056675816254755834, guid: 48b246118ba9d574ba70b98a3d5a1bc5,
+        type: 3}
+      propertyPath: MaxDistanceToChase
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 48b246118ba9d574ba70b98a3d5a1bc5, type: 3}
@@ -499,17 +515,17 @@ PrefabInstance:
     - target: {fileID: 1056675816254755782, guid: 48b246118ba9d574ba70b98a3d5a1bc5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -26.562855
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1056675816254755782, guid: 48b246118ba9d574ba70b98a3d5a1bc5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -15.22367
+      value: -16
       objectReference: {fileID: 0}
     - target: {fileID: 1056675816254755782, guid: 48b246118ba9d574ba70b98a3d5a1bc5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 4.140417
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 1056675816254755782, guid: 48b246118ba9d574ba70b98a3d5a1bc5,
         type: 3}
@@ -566,6 +582,21 @@ PrefabInstance:
       propertyPath: mazeGen
       value: 
       objectReference: {fileID: 29020860}
+    - target: {fileID: 1056675816254755834, guid: 48b246118ba9d574ba70b98a3d5a1bc5,
+        type: 3}
+      propertyPath: ChaseSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1056675816254755834, guid: 48b246118ba9d574ba70b98a3d5a1bc5,
+        type: 3}
+      propertyPath: WanderSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1056675816254755834, guid: 48b246118ba9d574ba70b98a3d5a1bc5,
+        type: 3}
+      propertyPath: MaxDistanceToChase
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 48b246118ba9d574ba70b98a3d5a1bc5, type: 3}
@@ -860,17 +891,17 @@ PrefabInstance:
     - target: {fileID: 1056675816254755782, guid: 48b246118ba9d574ba70b98a3d5a1bc5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -25.992855
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1056675816254755782, guid: 48b246118ba9d574ba70b98a3d5a1bc5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -15.22367
+      value: -16
       objectReference: {fileID: 0}
     - target: {fileID: 1056675816254755782, guid: 48b246118ba9d574ba70b98a3d5a1bc5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.7595825
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 1056675816254755782, guid: 48b246118ba9d574ba70b98a3d5a1bc5,
         type: 3}
@@ -1052,17 +1083,17 @@ PrefabInstance:
     - target: {fileID: 1056675816254755782, guid: 48b246118ba9d574ba70b98a3d5a1bc5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -26.352856
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1056675816254755782, guid: 48b246118ba9d574ba70b98a3d5a1bc5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -15.22367
+      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 1056675816254755782, guid: 48b246118ba9d574ba70b98a3d5a1bc5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.7504177
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 1056675816254755782, guid: 48b246118ba9d574ba70b98a3d5a1bc5,
         type: 3}
@@ -1119,6 +1150,21 @@ PrefabInstance:
       propertyPath: mazeGen
       value: 
       objectReference: {fileID: 29020860}
+    - target: {fileID: 1056675816254755834, guid: 48b246118ba9d574ba70b98a3d5a1bc5,
+        type: 3}
+      propertyPath: ChaseSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1056675816254755834, guid: 48b246118ba9d574ba70b98a3d5a1bc5,
+        type: 3}
+      propertyPath: WanderSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1056675816254755834, guid: 48b246118ba9d574ba70b98a3d5a1bc5,
+        type: 3}
+      propertyPath: MaxDistanceToChase
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 48b246118ba9d574ba70b98a3d5a1bc5, type: 3}

@@ -69,16 +69,16 @@ public class AIMovement : MonoBehaviour
 
     private Vector3 randomPath()
     {
-        //get the array from mazegenerator
-        maze = mazeGen.GetComponent<MazeGenerator>().mazeArray; //45 x 32
-        Vector3 tempPos = new Vector3(Random.Range(0f, 32f), 2.2f, Random.Range(0f, 45f) + 0.5f); //2.2f
+    //    //get the array from mazegenerator
+    //    maze = mazeGen.GetComponent<MazeGenerator>().mazeArray; //45 x 32
+        Vector3 tempPos = new Vector3(Random.Range(0, 45), 2.2f, Random.Range(0, 32)); //2.2f
 
         //pick a random location if it does equal zero, set to there, if not loop until it does.
-        while (maze[(int)tempPos.x, (int)tempPos.z] ! == 1)
-        {
-            tempPos = new Vector3(Random.Range(0, 32) + 0.5f, 2.2f, Random.Range(0, 45) + 0.5f);
-            Debug.Log("loop");
-        } 
+        //while (maze[(int)tempPos.x, (int)tempPos.z] ! == 1)
+        //{
+        //    tempPos = new Vector3(Random.Range(0, 45), 2.2f, Random.Range(0, 32));
+        //    Debug.Log("loop");
+        //} 
         return tempPos;
     }
 
