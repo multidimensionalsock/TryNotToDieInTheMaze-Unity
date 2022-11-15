@@ -7,17 +7,23 @@ using UnityEngine.UI;
 public class UIvariables : MonoBehaviour
 {
     private int m_score = 0;
+    private int m_lives = 3;
     [SerializeField] TMP_Text m_ScoreText;
 
     void Start()
     {
-        m_ScoreText.text = "score: " + m_score.ToString();
+        m_ScoreText.text = "Score: " + m_score.ToString() + "<br>Lives: " + m_lives;
     }
 
     public void AddScore(int points)
     {
         m_score += points;
-        m_ScoreText.text = "score: " + m_score.ToString();
+        m_ScoreText.text = "Score: " + m_score.ToString() + "<br>Lives: " + m_lives;
     }
     
+    public void RemoveLife()
+    {
+        m_lives--;
+        m_ScoreText.text = "Score: " + m_score.ToString() + "<br>Lives: " + m_lives;
+    }
 }
