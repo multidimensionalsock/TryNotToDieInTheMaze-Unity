@@ -1445,6 +1445,17 @@ PrefabInstance:
     serializedVersion: 2
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8681365733966935924, guid: 9ca4b18c60b0f41429c423352789bf6a,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8681365733966935925, guid: 9ca4b18c60b0f41429c423352789bf6a,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 4dd9e2d7472ca6e4994364b6e4c46e22,
+        type: 2}
     - target: {fileID: 8681365733966935926, guid: 9ca4b18c60b0f41429c423352789bf6a,
         type: 3}
       propertyPath: m_Name
