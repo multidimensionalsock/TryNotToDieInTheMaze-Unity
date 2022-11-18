@@ -5,8 +5,7 @@ using UnityEngine;
 public class ScoreObjectScript : MonoBehaviour
 {
     UIvariables updateScore;
-
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
         updateScore.AddScore(1);
         gameObject.SetActive(false);
