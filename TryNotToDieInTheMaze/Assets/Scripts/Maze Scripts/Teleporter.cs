@@ -30,7 +30,14 @@ public class Teleporter : MonoBehaviour
     private void PickRandomTeleporter()
     {
         int newpos = Random.Range(0, poslistLength);
-        m_Destination = m_teleporters[newpos];
+        if (m_teleporters[newpos] != this)
+        {
+            m_Destination = m_teleporters[newpos];
+        }
+        else
+        {
+            PickRandomTeleporter();
+        }
     }
 
     public void SetTeleportersList(List<GameObject> teleporters, int listLength)
