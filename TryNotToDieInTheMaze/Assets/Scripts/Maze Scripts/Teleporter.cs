@@ -9,22 +9,25 @@ public class Teleporter : MonoBehaviour
     private List<Teleporter> m_teleporters;
     private int poslistLength;
     GameObject m_player;
-    GameObject m_particleEffect;
+    ParticleSystem m_ParticleSystem;
+    ParticleSystem.MainModule main;
     bool activeStatus = false;
 
     private void Start()
     {
         m_player = GameObject.Find("Player");
-        m_particleEffect = transform.GetChild(1).gameObject;
+        m_ParticleSystem = transform.GetChild(1).gameObject.GetComponent<ParticleSystem>();
+        main = m_ParticleSystem.main;
     }
 
     private void LateUpdate()
     {
-        if ((m_player.transform.position - transform.position).magnitude <= 15)
+        if ((m_player.transform.position - transform.position).magnitude <= 5)
         {
             if (activeStatus == false)
             {
-                m_particleEffect.SetActive(true);
+                m_ParticleSystem.Play();
+                main.loop = true;
                 activeStatus = true;
             }
         }
@@ -32,7 +35,7 @@ public class Teleporter : MonoBehaviour
         {
             if (activeStatus == true)
             {
-                m_particleEffect.SetActive(false);
+                main.loop = false;
                 activeStatus = false;
             }
         }
