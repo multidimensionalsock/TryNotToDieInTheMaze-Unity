@@ -8,6 +8,35 @@ public class Teleporter : MonoBehaviour
     private Teleporter m_Destination;
     private List<Teleporter> m_teleporters;
     private int poslistLength;
+    GameObject m_player;
+    ParticleSystem m_particleEffect;
+    bool activeStatus = false;
+
+    private void Start()
+    {
+        m_player = GameObject.Find("Player");
+        m_particleEffect = transform.GetChild(1).gameObject.GetComponent<ParticleSystem>();
+    }
+
+    private void LateUpdate()
+    {
+        if ((m_player.transform.position - transform.position).magnitude <= 15)
+        {
+            if (activeStatus == false)
+            {
+                m_particleEffect.Play();
+                activeStatus = true;
+            }
+        }
+        else
+        {
+            if (activeStatus == true)
+            {
+                m_particleEffect.Pause();
+                activeStatus = false;
+            }
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
