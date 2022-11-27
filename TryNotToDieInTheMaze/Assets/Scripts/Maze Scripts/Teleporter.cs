@@ -9,13 +9,13 @@ public class Teleporter : MonoBehaviour
     private List<Teleporter> m_teleporters;
     private int poslistLength;
     GameObject m_player;
-    ParticleSystem m_particleEffect;
+    GameObject m_particleEffect;
     bool activeStatus = false;
 
     private void Start()
     {
         m_player = GameObject.Find("Player");
-        m_particleEffect = transform.GetChild(1).gameObject.GetComponent<ParticleSystem>();
+        m_particleEffect = transform.GetChild(1).gameObject;
     }
 
     private void LateUpdate()
@@ -24,7 +24,7 @@ public class Teleporter : MonoBehaviour
         {
             if (activeStatus == false)
             {
-                m_particleEffect.Play();
+                m_particleEffect.SetActive(true);
                 activeStatus = true;
             }
         }
@@ -32,7 +32,7 @@ public class Teleporter : MonoBehaviour
         {
             if (activeStatus == true)
             {
-                m_particleEffect.Pause();
+                m_particleEffect.SetActive(false);
                 activeStatus = false;
             }
         }
