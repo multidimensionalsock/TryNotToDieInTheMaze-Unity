@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DestorySelf : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class DestorySelf : MonoBehaviour
     {
         if (lives == 0)
         {
-
+            SceneManager.LoadScene("EndScene");
             //end screen
         }
 
