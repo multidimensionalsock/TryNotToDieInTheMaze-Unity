@@ -12,19 +12,14 @@ public class DestorySelf : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        startPoint = transform.position;
-        
+        startPoint = new Vector3(19, 2, 15.5f);
+        transform.position = startPoint;
     }
-
-    // Update is called once per frame
-    private void Update()
+    
+    private void GoToEndScreen()
     {
-        if (lives == 0)
-        {
-            SceneManager.LoadScene("EndScene");
-            //end screen
-        }
-
+        Debug.Log("player dead");
+        SceneManager.LoadScene("EndScene");
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -34,6 +29,10 @@ public class DestorySelf : MonoBehaviour
             transform.position = startPoint;
             UI.GetComponent<UIvariables>().RemoveLife();
             lives--;
+            if (lives == 0)
+            {
+                GoToEndScreen();
+            }
         }
     }
     
