@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+//UI for start screen
 public class PlayGameButton : MonoBehaviour
 {
     public void loadGameScene()

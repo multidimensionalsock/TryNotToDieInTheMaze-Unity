@@ -13,6 +13,7 @@ public class audiospeed : MonoBehaviour
         StartCoroutine(changePitch());
     }
 
+    //function that increases the pitch of the background music by 1% every 20 seconds.
     IEnumerator changePitch()
     {
         yield return new WaitForSecondsRealtime(20);

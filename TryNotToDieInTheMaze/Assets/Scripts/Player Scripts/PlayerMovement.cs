@@ -16,32 +16,27 @@ public class PlayerMovement : MonoBehaviour
         baseSpeed = playerSpeed;
     }
 
-    // Update is called once per frame
+    // player movemnet based on input
     void FixedUpdate()
     {
-        //m_rb.velocity = Vector3.zero;
         if (Input.GetKey(KeyCode.W))
         {
-            //transform.Translate(0f, 0f, Time.deltaTime * _moveSpeed);
-            m_rb.AddForce(transform.forward * playerSpeed, ForceMode.Force); //phyisics automatically applies deltatime
-            previousDir = Vector3.up;
+            m_rb.AddForce(transform.forward * playerSpeed, ForceMode.Force); //physics automatically applies deltatime
+            previousDir = Vector3.up; //keeps the player going in that direction if they stop clicking for a time
         }
         if (Input.GetKey(KeyCode.S))
         {
-            //transform.Translate(0f, 0f, Time.deltaTime * -_moveSpeed);
             m_rb.AddForce(-transform.forward * playerSpeed, ForceMode.Force);
             previousDir = Vector3.down;
             
         }
         if (Input.GetKey(KeyCode.D))
         {
-            //transform.Translate(Time.deltaTime * _moveSpeed, 0f, 0f);
             m_rb.AddForce(transform.right * playerSpeed, ForceMode.Force);
             previousDir = Vector3.right;
         }
         if (Input.GetKey(KeyCode.A))
         {
-            //transform.Translate(Time.deltaTime * -_moveSpeed, 0f, 0f);
             m_rb.AddForce(-transform.right * playerSpeed, ForceMode.Force);
             previousDir = Vector3.left;
         }

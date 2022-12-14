@@ -8,6 +8,7 @@ using UnityEngine.UIElements;
 public class MazeGenerator : MonoBehaviour
 {
     [Header("Maze Variables")]
+    //maze array that defines where prefabs are in the scene
     public int[,] mazeArray = //45 x 32
         {{ 1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1 },
          { 1,1,1,1,1,1,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,1,1 },
@@ -60,18 +61,12 @@ public class MazeGenerator : MonoBehaviour
     void Start()
     {
         scoreObjectList = new List<GameObject>();
-        MazeGeneratorFunc(mazeArray,45,32);
+        MazeGeneratorFunc(mazeArray,45,32); //function that builds the maze
         
         
-        //build navmesh
+        //build navmesh based on now made maze
         m_navmesh = GetComponent<NavMeshSurface>();
         m_navmesh.BuildNavMesh();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //NewScoreObject();
     }
 
     void MazeGeneratorFunc(int[,] mazeMap, int height, int width)
@@ -80,6 +75,7 @@ public class MazeGenerator : MonoBehaviour
         teleporterList = new List<GameObject>();
         int teleporterLength = 0;
 
+        //goes through array and places prefabs based on the value in the array
         for (int i = 0; i < width; i++)
         {
             for (int j = 0; j < height; j++)
@@ -97,12 +93,13 @@ public class MazeGenerator : MonoBehaviour
                         break;
                     case 3:
                        GameObject newteleport = Instantiate(TeleportPrefab, new Vector3(j, 1.9f, i), Quaternion.identity);
-                        teleporterList.Add(newteleport);
-                        teleporterLength++;
+                        teleporterList.Add(newteleport); //adds teleporters to a list of them all
+                        teleporterLength++; //length of the list
                         break;
                 }
             }
         }
+        //goes through the list and sets the component values
         for (int i = 0; i < teleporterLength; i++)
         {
             teleporterList[i].GetComponent<Teleporter>().SetTeleportersList(teleporterList, teleporterLength);
@@ -113,8 +110,7 @@ public class MazeGenerator : MonoBehaviour
 
     void NewScoreObject(Vector3 position)
     {
-//could have it so all score objects are always in the scene and are enabled and activated when needed?
-        //Vector3 position = GetRandom();
+        //puts a new score object in
         GameObject score = Instantiate(ScorePrefab, position, Quaternion.identity);
         score.SetActive(false);
         scoreObjectList.Add(score);
@@ -137,6 +133,7 @@ public class MazeGenerator : MonoBehaviour
         return tempPos;
     }
 
+    //coroutine that spawns new score handlers every set amount of time
     IEnumerator scoreObjectHandler()
     {
         yield return new WaitForSeconds(scoreObjectGenFrequency);

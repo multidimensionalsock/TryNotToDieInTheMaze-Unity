@@ -6,7 +6,7 @@ using UnityEngine.AI;
 
 public class AIMovement : MonoBehaviour
 {
-    private Vector3 m_targetLocation;
+    private Vector3 m_targetLocation; //where the AI is going 
     public GameObject player;
     private AIState m_state;
     public float MaxDistanceToChase = 50f;
@@ -61,27 +61,21 @@ public class AIMovement : MonoBehaviour
 
     }
 
+    //function that sets where the AI is going
     private void UpdatePath(Vector3 newLocation)
     {
         m_targetLocation = newLocation;
         m_Agent.SetDestination(newLocation);
     }
 
+    //generates a random position in the maze
     private Vector3 randomPath()
     {
-    //    //get the array from mazegenerator
-    //    maze = mazeGen.GetComponent<MazeGenerator>().mazeArray; //45 x 32
         Vector3 tempPos = new Vector3(Random.Range(0, 45), 2.2f, Random.Range(0, 32)); //2.2f
-
-        //pick a random location if it does equal zero, set to there, if not loop until it does.
-        //while (maze[(int)tempPos.x, (int)tempPos.z] ! == 1)
-        //{
-        //    tempPos = new Vector3(Random.Range(0, 45), 2.2f, Random.Range(0, 32));
-        //    Debug.Log("loop");
-        //} 
         return tempPos;
     }
 
+    //finds how far the AI is from the player
     private float FindRange()
     {
         float tempDist = (player.transform.position - transform.position).magnitude;
@@ -98,6 +92,7 @@ public class AIMovement : MonoBehaviour
     }
 }
 
+//enum containing the states the AI can be in which changes its behaviour
 public enum AIState
 {
     WANDER,

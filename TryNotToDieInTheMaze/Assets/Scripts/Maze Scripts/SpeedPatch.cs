@@ -6,6 +6,7 @@ public class SpeedPatch : MonoBehaviour
 {
     public int speedmod = 100;
 
+    //speeds up the player if the player collides with it
     private void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -15,6 +16,7 @@ public class SpeedPatch : MonoBehaviour
         }
     }
 
+    //sets the player speed back when the player is no longer colliding
     private void OnTriggerExit(Collider collision)
     {
         if (collision.gameObject.tag == "Player")

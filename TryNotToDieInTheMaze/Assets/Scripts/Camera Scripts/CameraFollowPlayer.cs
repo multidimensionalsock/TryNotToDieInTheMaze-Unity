@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//script to make the camera move based on the players position
 public class CameraFollowPlayer : MonoBehaviour
 {
     public GameObject PlayerCharacter;

@@ -22,6 +22,7 @@ public class Teleporter : MonoBehaviour
 
     private void LateUpdate()
     {
+        //makes the particle system play when the player is in range
         if ((m_player.transform.position - transform.position).magnitude <= 5)
         {
             if (activeStatus == false)
@@ -41,6 +42,7 @@ public class Teleporter : MonoBehaviour
         }
     }
 
+    //if the enemy or player collides it transports them to another teleporter
     private void OnTriggerEnter(Collider other)
     {
         if (m_Active && (other.tag == "Player" || other.tag == "Enemy"))
@@ -51,6 +53,7 @@ public class Teleporter : MonoBehaviour
             Debug.Log("collided");
         }
     }
+    //reactivates teleporter
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "Player" || other.tag == "Enemy")
@@ -59,6 +62,7 @@ public class Teleporter : MonoBehaviour
         }
     }
 
+    //picks the teleporter the player will move to randomly
     private void PickRandomTeleporter()
     {
         int newpos = Random.Range(0, poslistLength);
@@ -68,7 +72,7 @@ public class Teleporter : MonoBehaviour
         }
         else
         {
-            PickRandomTeleporter();
+            PickRandomTeleporter(); //if the teleporter chosen is itself, recall function
         }
     }
 

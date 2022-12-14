@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//script to change between cameras
 public class CameraController : MonoBehaviour
 {
     [SerializeField] Camera m_FollowPlayerCamera;
@@ -14,8 +15,8 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         m_currentCamera = CurrentCameraState.FollowPlayerCamera;
-        m_FollowPlayerCamera.enabled = true;
-        m_ZoomOutCamera.enabled = false;
+        m_FollowPlayerCamera.enabled = true; //camera that follows the player round the maze
+        m_ZoomOutCamera.enabled = false; // camera that shows the whole maze
     }
 
     // Update is called once per frame
@@ -23,9 +24,11 @@ public class CameraController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z))
         {
+            //chnage camera when z is pressed
             Debug.Log("Z pressed");
             if (m_currentCamera == CurrentCameraState.FollowPlayerCamera)
             {
+                //couroutine that swaps the camera back after a set time
                 if (canZoomOut)
                     StartCoroutine(SwapToZoomOut());
             }
@@ -39,16 +42,14 @@ public class CameraController : MonoBehaviour
 
     void ChangeCamera()
     {
+        //swaps camera to the opposite
         Debug.Log(m_currentCamera);
         if (m_currentCamera == CurrentCameraState.FollowPlayerCamera)
         {
-            //if (canZoomOut)
-            //{
             Debug.Log("zooming out");
                 m_currentCamera = CurrentCameraState.ZoomOutCamera;
                 m_FollowPlayerCamera.enabled = false;
                 m_ZoomOutCamera.enabled = true;
-            //}
         }
         else if (m_currentCamera == CurrentCameraState.ZoomOutCamera)
         {
@@ -58,11 +59,12 @@ public class CameraController : MonoBehaviour
         }
     }
 
+    //function to swap to zoomed out camera
     IEnumerator SwapToZoomOut()
     {
         Debug.Log("SwapToZoomOut running");
         ChangeCamera();
-        StartCoroutine(CoolDownTime());
+        StartCoroutine(CoolDownTime()); //coroutine to put a cool down of how often the zoomed out camerca can be used
         yield return new WaitForSeconds(TimeOnZoom);
         if (m_currentCamera == CurrentCameraState.ZoomOutCamera)
         {

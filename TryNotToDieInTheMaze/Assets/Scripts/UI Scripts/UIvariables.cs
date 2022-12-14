@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+//controls UI
 public class UIvariables : MonoBehaviour
 {
     private int m_score = 0;
